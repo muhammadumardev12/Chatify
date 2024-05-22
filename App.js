@@ -12,6 +12,7 @@ import Users from './scr/components/Users'
 import Settings from './scr/components/Settings'
 import Chat from './scr/screens/Chat'
 import { beginAsyncEvent } from 'react-native/Libraries/Performance/Systrace'
+import DashBoard from './scr/screens/DashBoard'
 
 
 const App = () => {
@@ -47,8 +48,8 @@ const App = () => {
         <stack.Screen name='Users' component={Users} options={{headerShown:false}}  />
         <stack.Screen name='Settings' component={Settings} options={{headerShown:false}} />
         <stack.Screen name='Chat' component={Chat}   options={{headerShown:true,headerStyle:{backgroundColor:'green'},headerTintColor:'white'}}   />
+        <stack.Screen name='DashBoard' component={DashBoard}   options={{headerShown:false}}   />
 
-       
       </stack.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>

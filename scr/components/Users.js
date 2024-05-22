@@ -1,4 +1,4 @@
-import { View, Text, FlatList,Image,TouchableOpacity } from 'react-native'
+import { View, Text, FlatList,Image,TouchableOpacity, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import firestore from '@react-native-firebase/firestore'
@@ -108,7 +108,7 @@ const Users = () => {
       const querySnapshot = await firestore().collection('users').where('email', '!=', email).get();
       const fetchedUsers = [];
       querySnapshot.forEach((doc) => {
-        fetchedUsers.push(doc.data());
+      fetchedUsers.push({...doc.data(), id:doc.id});
       });
       setUsers(fetchedUsers);
     } catch (error) {
@@ -128,6 +128,7 @@ const Users = () => {
       }}>
         <Text style={{ fontSize: responsiveFontSize(3), fontWeight: 'bold', color: 'green' }}>Chats</Text>
       </View>
+      
       <FlatList
         data={users}
         renderItem={({ item }) => {
@@ -154,12 +155,12 @@ const Users = () => {
               onPress={() => { navigation.navigate('Chat', { data: item, id: id }) }}
             >
                 {
-              console.log("🚀 ~ Users ~ id:", id)
+              // console.log("🚀 ~ Users ~ id:", id)
                   
               }
               <Image
                 source={{
-                  uri: "https://cdn.sanity.io/images/e3a07iip/production/db39b602de6ade3cbe6e5dd962f9544f07b28edd-1083x1083.png"
+                  uri: item.avatar
                 }}
                 style={{ width: 48, height: 48, borderColor: 'green', borderWidth: 2, borderRadius: 100, marginHorizontal: responsiveWidth(2) }}
               />

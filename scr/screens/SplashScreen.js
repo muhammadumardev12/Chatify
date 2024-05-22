@@ -3,37 +3,42 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { Chartify, Rectangle } from '../assets/pictures/Svgs';
 
 const SplashScreen = ({navigation}) => {
     useEffect(()=>{
      const timer = setTimeout(()=>{
-        // navigation.navigate('LoginScreen')
+        navigation.navigate('LoginScreen')
         checkLoginIN()
 
      },1000)
     },[])
     //----------------Check-login-Report---------------//
+   
     const checkLoginIN = async()=>{
      const id = await AsyncStorage.getItem("USERID");
      console.log("🚀 ~ checkLoginIN ~ id:", id)
-     if(id != null){
+     if(id !== null){
         navigation.navigate('Home')
      }else{
         navigation.navigate('LoginScreen')
      }
     }
+   
+
     return (
         <View style={styles.container}>
-            {/* <Image
-                source={require('../assets/pictures/')}
-                style={styles.backgroundImage}
-                resizeMode="cover"
-            /> */}
-            <View style={styles.overlay}>
+         
+            
+            <View 
+            style={styles.overlay}
+            >
                 <Image
                     source={require('../assets/pictures/logo.png')}
                     style={styles.logo}
                 />
+
+            
                 <Text style={styles.text}>Welcome to Chartify</Text>
             </View>
         </View>

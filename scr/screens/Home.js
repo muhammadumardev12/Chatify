@@ -1,7 +1,6 @@
-import { View, Text, StatusBar, TouchableOpacity, Image } from 'react-native'
+import { View, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import { responsiveHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions'
-import { Groups_Chat } from '../assets/pictures/Svgs/Svgs'
 import { Rectangle, Setting } from '../assets/pictures/Svgs'
 import { useNavigation } from '@react-navigation/native'
 import Users from '../components/Users'
@@ -9,7 +8,6 @@ import Settings from '../components/Settings'
 
 
 const Home = () => {
-  const navigation = useNavigation();
   const [showUser,setshowUser] = useState(0)
   return (
     <View style={{flex:1,backgroundColor:'white'}}>

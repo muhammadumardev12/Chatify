@@ -44,13 +44,9 @@ const LoginScreen = () => {
     setVisible(!visible);
     setShow(!show);
   };
-
-
-  
   const handle_Email_Status = text => {
     const regex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
     setEmail(text);
     if (regex.test(text)) {
       setGetEmailValidationStatus(false);
@@ -76,8 +72,6 @@ const LoginScreen = () => {
     const loginUser =()=>{
       setVisibleValue(true)
       firestore().collection("users").where("email","==",email).get()
-      
-      
       .then(res=>  {
         setVisibleValue(false)
         if(res.docs != []){
@@ -95,7 +89,6 @@ const LoginScreen = () => {
         
       })
     }
-
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
@@ -148,7 +141,6 @@ const LoginScreen = () => {
      await AsyncStorage.setItem('USERID',userId)
      navigation.navigate('Home')
   }
-
   return (
 <KeyboardAwareScrollView
 contentContainerStyle={{ flexGrow: 1 }}

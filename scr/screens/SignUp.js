@@ -6,11 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  StyleSheet,
-  Alert,
   StatusBar,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import {
@@ -21,23 +17,20 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Feather';
-
-// import {useNavigation} from '@react-navigation/native';
 import {avatars} from '../../utils/Supports';
-import uuid from 'react-native-uuid'
-import firestore from '@react-native-firebase/firestore'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import uuid from 'react-native-uuid';
+import firestore from '@react-native-firebase/firestore';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const SignUp = ({navigation}) => {
-  // const navigation = useNavigation();
   const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(true);
   const [avatar, setAvatar] = useState(avatars[0]?.image.asset.url);
   const [avatarMenu, setAvatarMenu] = useState(false);
-  const [name,setName] =useState('')
-  const [email,setEmail] = useState('')
-  const [password,setPassword] = useState('') 
-  
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const Hide = () => {
     setVisible(!visible);
     setShow(!show);
@@ -45,13 +38,13 @@ const SignUp = ({navigation}) => {
 
   const handleAvatar = item => {
     setAvatarMenu(false);
-    setAvatar(item?.image.asset.url)
+    setAvatar(item?.image.asset.url);
     setAvatarMenu(false);
   };
 
   // const signUpFn =()=>{
   //  auth().createUserWithEmailAndPassword(email,password).then(()=>{
-  //   Alert.alert("User Created")   
+  //   Alert.alert("User Created")
   //   navigation.navigate('Home')
 
   //  })
@@ -61,28 +54,31 @@ const SignUp = ({navigation}) => {
   //  })
   // }
 
-     //------------------------User-Sign-Up-through-Firebase-Store-------------------------//
-     const registerUser =()=>{
-      const userId = uuid.v4()
-       firestore().collection('users').doc(userId).set({
-        name:name,
-        email:email,
-        password:password,
-        userId:userId
-       }).then(res=>{
-        
-        console.log("User Sccessfully Created")
+  //------------------------User-Sign-Up-through-Firebase-Store-------------------------//
+  const registerUser = () => {
+    const userId = uuid.v4();
+    firestore()
+      .collection('users')
+      .doc(userId)
+      .set({
+        name: name,
+        email: email,
+        password: password,
+        userId: userId,
+        avatar :avatar,
+      })
+      .then(res => {
+        console.log('User Sccessfully Created');
         navigation.navigate('LoginScreen');
-       })
-       .catch(err=>{
-        console.log("error is ",err)
-       })
-     }
+      })
+      .catch(err => {
+        console.log('error is ', err);
+      });
+  };
   return (
     <>
-    <StatusBar backgroundColor={'#011e22'} />
+      <StatusBar backgroundColor={'#011e22'} />
       <View style={{flex: 1}}>
-      
         {/* -----------------------Avatar---------------------------- */}
         {avatarMenu ? (
           <View>
@@ -124,7 +120,7 @@ const SignUp = ({navigation}) => {
           </View>
         ) : (
           //  {/* ------------------------Avatar-End----------------------- */}
-          
+
           <ImageBackground
             source={require('../assets/pictures/bg.png')}
             style={{width: responsiveWidth(100), height: responsiveHeight(35)}}
@@ -164,7 +160,7 @@ const SignUp = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}
-                    onPress={()=>setAvatarMenu(true)}>
+                    onPress={() => setAvatarMenu(true)}>
                     <ImageBackground
                       source={{uri: avatar}}
                       resizeMode="contain"
@@ -188,107 +184,97 @@ const SignUp = ({navigation}) => {
                   </TouchableOpacity>
                 </View>
                 <KeyboardAwareScrollView>
-                <View>
-                  <View
-                    style={{
-                      borderColor: 'grey',
-                      borderWidth: 0.5,
-                      width: responsiveWidth(85),
-                      height: responsiveHeight(6.5),
-                      borderRadius: 10,
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                      // marginVertical: responsiveHeight(3),
-                      marginTop: responsiveHeight(2),
-                    }}>
-                    <Icon
-                      name="account"
-                      size={22}
-                      color="black"
-                      style={{marginLeft: responsiveWidth(2)}}></Icon>
-                    <TextInput
-                      placeholder="Name"
-                      placeholderTextColor={'black'}
+                  <View>
+                    <View
                       style={{
-                        width: responsiveWidth(70),
+                        borderColor: 'grey',
+                        borderWidth: 0.5,
+                        width: responsiveWidth(85),
                         height: responsiveHeight(6.5),
-                      }}
-                      value={name}
-                      onChangeText={(text)=>setName(text)}
-                      ></TextInput>
-                  </View>
-                  <View
-                    style={{
-                      borderColor: 'grey',
-                      borderWidth: 0.5,
-                      width: responsiveWidth(85),
-                      height: responsiveHeight(6.5),
-                      borderRadius: 10,
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                      marginVertical: responsiveHeight(3),
-                    }}>
-                    <Icon
-                      name="email"
-                      size={22}
-                      color="black"
-                      style={{marginLeft: responsiveWidth(2)}}></Icon>
-                    <TextInput
-                      placeholder="Email"
-                      placeholderTextColor={'black'}
+                        borderRadius: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        // marginVertical: responsiveHeight(3),
+                        marginTop: responsiveHeight(2),
+                      }}>
+                      <Icon
+                        name="account"
+                        size={22}
+                        color="black"
+                        style={{marginLeft: responsiveWidth(2)}}></Icon>
+                      <TextInput
+                        placeholder="Name"
+                        placeholderTextColor={'black'}
+                        style={{
+                          width: responsiveWidth(70),
+                          height: responsiveHeight(6.5),
+                        }}
+                        value={name}
+                        onChangeText={text => setName(text)}></TextInput>
+                    </View>
+                    <View
                       style={{
-                        width: responsiveWidth(70),
+                        borderColor: 'grey',
+                        borderWidth: 0.5,
+                        width: responsiveWidth(85),
                         height: responsiveHeight(6.5),
-                      }}
-                      value={email}
-                      onChangeText={(text)=>setEmail(text)}
-                      ></TextInput>
-                  </View>
-                  <View
-                    style={{
-                      borderColor: 'grey',
-                      borderWidth: 0.5,
-                      width: responsiveWidth(85),
-                      height: responsiveHeight(6.5),
-                      borderRadius: 10,
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                    }}>
-                    <Icon2
-                      name="lock"
-                      size={20}
-                      color="black"
-                      style={{marginLeft: responsiveWidth(2)}}></Icon2>
-                    <TextInput
-                      placeholder="Password"
-                      placeholderTextColor={'black'}
-                      secureTextEntry={visible}
+                        borderRadius: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        marginVertical: responsiveHeight(3),
+                      }}>
+                      <Icon
+                        name="email"
+                        size={22}
+                        color="black"
+                        style={{marginLeft: responsiveWidth(2)}}></Icon>
+                      <TextInput
+                        placeholder="Email"
+                        placeholderTextColor={'black'}
+                        style={{
+                          width: responsiveWidth(70),
+                          height: responsiveHeight(6.5),
+                        }}
+                        value={email}
+                        onChangeText={text => setEmail(text)}></TextInput>
+                    </View>
+                    <View
                       style={{
-                        width: responsiveWidth(70),
+                        borderColor: 'grey',
+                        borderWidth: 0.5,
+                        width: responsiveWidth(85),
                         height: responsiveHeight(6.5),
-                        marginLeft: responsiveWidth(1),
-                      }}
-                      value={password}
-                      onChangeText={(text)=>setPassword(text)}
-                      ></TextInput>
-                     
-                    <TouchableOpacity onPress={Hide}>
+                        borderRadius: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                      }}>
                       <Icon2
-                        name={show === false ? 'eye' : 'eye-slash'}
-                        color={'black'}
+                        name="lock"
                         size={20}
-                      />
-                    </TouchableOpacity>
+                        color="black"
+                        style={{marginLeft: responsiveWidth(2)}}></Icon2>
+                      <TextInput
+                        placeholder="Password"
+                        placeholderTextColor={'black'}
+                        secureTextEntry={visible}
+                        style={{
+                          width: responsiveWidth(70),
+                          height: responsiveHeight(6.5),
+                          marginLeft: responsiveWidth(1),
+                        }}
+                        value={password}
+                        onChangeText={text => setPassword(text)}></TextInput>
+
+                      <TouchableOpacity onPress={Hide}>
+                        <Icon2
+                          name={show === false ? 'eye' : 'eye-slash'}
+                          color={'black'}
+                          size={20}
+                        />
+                      </TouchableOpacity>
+                    </View>
                   </View>
-
-                </View>
                 </KeyboardAwareScrollView>
-
-                  
-
-
-
-
                 <TouchableOpacity
                   style={{
                     // backgroundColor: '#42C561',
@@ -301,10 +287,9 @@ const SignUp = ({navigation}) => {
                     alignItems: 'center',
                   }}
                   // onPress={signUpFn}
-                  onPress={()=>{
-                    registerUser()
-                  }}
-                  >
+                  onPress={() => {
+                    registerUser();
+                  }}>
                   <Text
                     style={{
                       color: 'white',
@@ -321,7 +306,6 @@ const SignUp = ({navigation}) => {
                       navigation.navigate('LoginScreen');
                     }}>
                     <Text style={{color: 'green', fontWeight: 'bold'}}>
-                      {' '}
                       Login here
                     </Text>
                   </TouchableOpacity>
@@ -336,5 +320,3 @@ const SignUp = ({navigation}) => {
 };
 
 export default SignUp;
-
-
