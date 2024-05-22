@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Chatify</string>
+    
+<string name="facebook_app_id">496735849370594</string>
+<string name="fb_login_protocol_scheme">fb496735849370594</string>
+<string name="facebook_client_token">52302694189a0a1ec005b37719e5c9fd</string>
+
+
+</resources>

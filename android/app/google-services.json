@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "215134417751",
+    "project_id": "react-native-c4cfc",
+    "storage_bucket": "react-native-c4cfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215134417751:android:5a340df503eaa4992e0412",
+        "android_client_info": {
+          "package_name": "com.chatify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215134417751-qmv2n2ms801772b9q9snb7l2ai4s2105.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chatify",
+            "certificate_hash": "cfe9549ceb9f5a541109096f7e805ebef8a6a562"
+          }
+        },
+        {
+          "client_id": "215134417751-6kg3ohftnt6sgmljc12gq56bvp9vh6b8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDQOWnTjQtdfQYDOs9808M4pEFv8aCSfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215134417751-6kg3ohftnt6sgmljc12gq56bvp9vh6b8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
