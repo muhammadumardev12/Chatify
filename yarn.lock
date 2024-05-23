@@ -3278,6 +3278,7 @@ __metadata:
     babel-jest: ^29.6.3
     eslint: ^8.19.0
     jest: ^29.6.3
+    lodash.filter: ^4.6.0
     prettier: 2.8.8
     react: 18.2.0
     react-native: 0.74.1
@@ -3285,6 +3286,7 @@ __metadata:
     react-native-gifted-chat: ^2.4.0
     react-native-keyboard-aware-scroll-view: ^0.9.5
     react-native-pager-view: ^6.3.1
+    react-native-raw-bottom-sheet: ^3.0.0
     react-native-responsive-dimensions: ^3.1.1
     react-native-safe-area-context: ^4.10.1
     react-native-screens: ^3.31.1
@@ -7163,6 +7165,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.filter@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "lodash.filter@npm:4.6.0"
+  checksum: f21d245d24818e15b560cb6cadc8404a1bf98bd87d037e5e51858aad57ca2b9db64d87e450a23c8f72dd2c66968efd09b034055ce86d93eef4a4eb6f1bbaf100
+  languageName: node
+  linkType: hard
+
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -8631,6 +8640,13 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: a8672a50bbc60c9d925b8935b484cda2ed976483fce156f31b497d799eb349b24b79934aa683576e606e3fd3d8d97877d0048eba95f702f15ae21263c2658fd5
+  languageName: node
+  linkType: hard
+
+"react-native-raw-bottom-sheet@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "react-native-raw-bottom-sheet@npm:3.0.0"
+  checksum: bd8cb9fff9240d1d09279910498efb26df80631f697fd7d93352f1247f30880d6ec6d1c978822f59d1cd375b03c9dad48d6f520935fde13b7ae35ec8305a2694
   languageName: node
   linkType: hard
 

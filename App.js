@@ -13,6 +13,7 @@ import Settings from './scr/components/Settings'
 import Chat from './scr/screens/Chat'
 import { beginAsyncEvent } from 'react-native/Libraries/Performance/Systrace'
 import DashBoard from './scr/screens/DashBoard'
+import Search from './scr/components/Search'
 
 
 const App = () => {
@@ -47,8 +48,12 @@ const App = () => {
         <stack.Screen name='Home' component={Home}  options={{headerShown:false}} />
         <stack.Screen name='Users' component={Users} options={{headerShown:false}}  />
         <stack.Screen name='Settings' component={Settings} options={{headerShown:false}} />
-        <stack.Screen name='Chat' component={Chat}   options={{headerShown:true,headerStyle:{backgroundColor:'green'},headerTintColor:'white'}}   />
+        <stack.Screen name='Chat' component={Chat}   options={{headerShown:false ,
+          // headerStyle:{backgroundColor:'green'},headerTintColor:'white'
+          }}   />
         <stack.Screen name='DashBoard' component={DashBoard}   options={{headerShown:false}}   />
+        <stack.Screen name='Search' component={Search}   options={{headerShown:false}}   />
+
 
       </stack.Navigator>
     </NavigationContainer>

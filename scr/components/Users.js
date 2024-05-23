@@ -117,18 +117,7 @@ const Users = () => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
-      <View style={{
-        backgroundColor: 'white',
-        height: responsiveHeight(8),
-        width: responsiveWidth(100),
-        elevation: 5,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <Text style={{ fontSize: responsiveFontSize(3), fontWeight: 'bold', color: 'green' }}>Chats</Text>
-      </View>
-      
+    <View style={{ flex: 1, alignItems: 'center' }}> 
       <FlatList
         data={users}
         renderItem={({ item }) => {

@@ -75,8 +75,8 @@ const LoginScreen = () => {
       .then(res=>  {
         setVisibleValue(false)
         if(res.docs != []){
-        console.log(JSON.stringify(res.docs[0].data()))
-        goToNext(res.docs[0].data().name,res.docs[0].data().email,res.docs[0].data().userId)
+        // console.log(JSON.stringify(res.docs[0].data()))
+        goToNext(res.docs[0].data().name,res.docs[0].data().email,res.docs[0].data().userId,res.docs[0].data().avatar)
         Alert.alert("User Found")
         }else{
           Alert.alert("User Not Found")
@@ -104,7 +104,7 @@ const LoginScreen = () => {
       
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       await auth().signInWithCredential(googleCredential);
-      navigation.navigate('Home');
+      navigation.navigate('DashBoard');
     } catch (error) {
       console.error('Google sign-in error:', error);
       Alert.alert('Google sign-in error');
@@ -135,11 +135,13 @@ const LoginScreen = () => {
   }
 
   //------------------------Which-user-is-login -thats-data---------------------//
-  const goToNext = async (name,email,userId)=>{
+  const goToNext = async (name,email,userId,avatar)=>{
      await AsyncStorage.setItem('NAME',name)
      await AsyncStorage.setItem('EMAIL',email)
      await AsyncStorage.setItem('USERID',userId)
-     navigation.navigate('Home')
+     await AsyncStorage.setItem('AVATAR',avatar)
+      
+     navigation.navigate('DashBoard')
   }
   return (
 <KeyboardAwareScrollView

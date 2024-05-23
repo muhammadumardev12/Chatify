@@ -1,9 +1,7 @@
-// SplashScreen.js
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { Chartify, Rectangle } from '../assets/pictures/Svgs';
 
 const SplashScreen = ({navigation}) => {
     useEffect(()=>{
@@ -19,7 +17,7 @@ const SplashScreen = ({navigation}) => {
      const id = await AsyncStorage.getItem("USERID");
      console.log("🚀 ~ checkLoginIN ~ id:", id)
      if(id !== null){
-        navigation.navigate('Home')
+        navigation.navigate('DashBoard')
      }else{
         navigation.navigate('LoginScreen')
      }

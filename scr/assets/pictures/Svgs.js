@@ -72,7 +72,7 @@ export const SearchIcon = props => {
   >
     <Path
       d="m26.493 23.76-4.915-4.88a11.363 11.363 0 0 0 2.443-7.05c0-2.277-.678-4.503-1.95-6.396a11.554 11.554 0 0 0-5.19-4.24 11.616 11.616 0 0 0-6.683-.656A11.583 11.583 0 0 0 4.276 3.69a11.496 11.496 0 0 0-3.165 5.895 11.463 11.463 0 0 0 .658 6.651 11.524 11.524 0 0 0 4.26 5.167 11.605 11.605 0 0 0 6.426 1.94 11.484 11.484 0 0 0 7.084-2.432l4.901 4.893a1.446 1.446 0 0 0 1.583.315c.176-.073.336-.18.47-.315a1.438 1.438 0 0 0 .317-1.576 1.437 1.437 0 0 0-.317-.468ZM3.78 11.83c0-1.708.509-3.378 1.462-4.797a8.666 8.666 0 0 1 3.893-3.18 8.712 8.712 0 0 1 5.012-.492 8.687 8.687 0 0 1 4.442 2.363 8.622 8.622 0 0 1 2.374 4.421 8.597 8.597 0 0 1-.494 4.989 8.643 8.643 0 0 1-3.195 3.875 8.703 8.703 0 0 1-10.953-1.074 8.614 8.614 0 0 1-2.54-6.105Z"
-      fill="#231F20"
+      fill="green"
     />
   </Svg>
 )
@@ -84,29 +84,48 @@ export const VerticalThreeDots = props => {
     <Svg
       width={18}
       height={26}
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
-      <Path d="M0 0h8c5.523 0 10 4.477 10 10v16H0V0Z" fill="url(#a)" />
-      <Defs>
-        <Pattern
-          id="a"
-          patternContentUnits="objectBoundingBox"
-          width={1}
-          height={1}
-        >
-          <Use xlinkHref="#b" transform="matrix(.01128 0 0 .00781 -.222 0)" />
-        </Pattern>
-        <Image
-          id="b"
-          width={128}
-          height={128}
-          xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAA3NCSVQICAjb4U/gAAAACXBIWXMAACbeAAAm3gFNR7WeAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAVZQTFRF////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv5j5zAAAAHF0Uk5TAAECAwQFBgcICgsMDxATFhcZHB0eHyIkLzAyMzg/QkNITE1QUlNUVVZZW2FiY2VqbW9wcnN1eHt+goWKjY+Sk5WXnaCipqeoqautr7CztLW6vcDBwsbKzM3P0NPZ29zd4Obp6+zt7/Hz9/j5+vv8/f6QIA4cAAAC3ElEQVQYGe3B6zuTYRwH8O/skFIkNdloiKSayKF0oOTUaJiyNcqMnDZ7nu///yavXA677/u6uq7fzwvP5wP8t6b+mdzW4eFWbqa/CfoSy0c8c7ScgK62WZ8X+LNtUNS9zyv2u6Fm3GMd3jiUTNBgAip6PBp4PVAQP6DRQRzyFmmxCHFJnxZ+EtKytMpC2L0qrar3IOsFHV5A1gIdFiCrQIcCZO3QYQeiwjU61MKQFKNTDKL26LAHWZt02ISsLB2ykDVMh2HIekiHhxCWp1Ue0gZoNQBxG7TYgLwun0Z+FxS8pdFbqJinwTx0NGZYV6YRSkKTrGMyBD29f3jJ716oir3Z5Tnl4Si0RVLT2zWeqm1PPYngeoRbk8nWMAKBQCBwozU349q0j62Vjsnj0tpYO/T1FXlOsQ+6On/ykp+dUPT6hFecvIaWyBfW9SUCHVM0mIKKNI3SUNBRoVGlA/JWabEKcSlapSBtnVbrEHbfo5V3H7KG6DAEWUt0WIKsIh2KkFWmQxmioj4d/CgkRX06+FGIKtOhDFm/6PALsjJ0yEBWmg5pyGrxaOW1QFiOVjlIS9EqBXGrtFiFvI4KjSodUPCSRmmo+EiDKeho+MS6Pkeg5VWFV1SHoCjxg5fkEtD1tMhzCr3Q1z62Vjomj0tro3Fcm+ZmBAKBQOBGC7cmk61hXI9Ianq7xlO17elUBNpib3Z5zu7oLajq/cNLSs+gp+E96/jQACW3v7Ou7B2oCH2jQSYEDe9oNAkFXT7NUpC3QYt8CNIGaPUc0gq0KkDYIzo8gqwROoxA1godViBrkw6bkPWXDn8hKkanGCSFa3SohSFqhw47kJWnQx6y5ugwB1mDdBiErLtVWlXvQliWVllIS/q08JMQt0iLRciLH9DoIA4FPR4NvB6omKDBBJSMe6zDG4ea7n1esd8NRW2zPi/wvj6ArsTyEc8cZR5DX1P/TG7r8HArN9N3B//tH9hPt/OAECjxAAAAAElFTkSuQmCC"
-        />
-      </Defs>
+      {/* Green rectangle */}
+      <Rect width={10} height={30} fill="none" />
+      {/* Three dots */}
+      <Circle cx={4} cy={3} r={3.5} fill="green" />
+      <Circle cx={4} cy={13} r={3.5} fill="green" />
+      <Circle cx={4} cy={23} r={3.5} fill="green" />
     </Svg>
   )
-
 }
+
+export const BackIcon = props => {
+  return(
+    <Svg
+    width={30}
+    height={30}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    {...props}
+  >
+    <Path fill="url(#a)" d="M0 0h30v30H0z" />
+    <Defs>
+      <Pattern
+        id="a"
+        patternContentUnits="objectBoundingBox"
+        width={1}
+        height={1}
+      >
+        <Use xlinkHref="#b" transform="scale(.01111)" />
+      </Pattern>
+      <Image
+        id="b"
+        width={90}
+        height={90}
+        xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAACX0lEQVR4nO2dsYpTQRRAs0ZksRBEG2GtF7HcagvrgPoLSeU3mP2HNRu/wEobrbXwD2zsbCxsFIRdwWghKi5HAtoIYubKu5N5OacO5HICk5y8mfcGAxEREREREekG4BxwH3jL3/kAzJav7WiMfgNsAY9YnVntmZsEmFLGSe2ZmwO4BZwqulvJ14BPlHPU5Vy9ArgIvA5Ifgmcrz1/EwBD4FlA8ntgp/b8zQDMA5K/ATdqz94MwIQYd2rP3gzAPvA1INnfzasCXAHeBSQ/B86u/EabDLANvAhIfgNcrj1/X/P6N5+B67XnbwbggHKWpXi79uzNAIyAHwHRd2vP3gzALrAISH68XG5qz98EmNcpkofmdY7oeWC5MK8LJU+IYV4XSN43rzsG87p7MK9TJG+Z1zmiDwJffOZ1oeSRed0xmNfdg3mdInloXueInge+/MzrQskTYpjXBZLN664xr9c/ry9lzNgLgHsByYvlLtHaszcFcFwo+dSr14peX4BDl44E/K85EX/eJQLsAV8Cy4hnTQKyx8QwwQOyZwHR3z0SUS76DPA0eMjnavEnu8kAF4BXAdkeWwvuFP0YkP3EnaJ5F2enxZ/spkP5Yfkl/h8SlP0gINvzKQHR2564SgI3OeaBmZ4qe0wMMz0gexYQbaYnZ/pO8RtuMpjpqbJ3zfQ82SMzPU/2NLBem+kRzPQkMNPzwExPlb3n1fQ82WNimOlJme4RjVLM9EQw09Nva7wILCNuNSsFuOmNutc304+zZusdwMMC0d4U9j8fD3L0j8eDnPw6wOTjQURERERERAZ/8BMXmYOMYh01GwAAAABJRU5ErkJggg=="
+      />
+    </Defs>
+  </Svg>
+  )
+}
+
