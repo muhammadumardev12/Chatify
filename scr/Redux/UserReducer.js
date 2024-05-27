@@ -1,7 +1,10 @@
-import {STOREUSERS } from "./constants";
+import {STORELOGINUSER, STOREUSERS } from "./constants";
 
 const initialState = {
-   user:[]
+   user:[],
+   id:'',
+   name:'',
+   avatar:''
   };
   
   const UserReducer = (state = initialState, action) => {
@@ -9,8 +12,16 @@ const initialState = {
       case STOREUSERS:
         return {
           ...state,
-          user: action.payload,
+          user: action.payload.users,
+          id: action.payload.id
         };
+        case STORELOGINUSER:
+        return {
+          ...state,
+          name: action.payload.name,
+          avatar: action.payload.avatar
+        };
+     
      
       default:
         return state;

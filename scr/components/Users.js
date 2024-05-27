@@ -14,7 +14,6 @@ import { storeUsers } from '../Redux/Actions'
     const dispatch = useDispatch();
 
     const [id, setId] = useState('');
-    console.log("🚀 ~ Users ------------Screen~ id:", id)
     const [users, setUsers] = useState([]);
    
   
@@ -34,7 +33,7 @@ import { storeUsers } from '../Redux/Actions'
         fetchedUsers.push({...doc.data(), id:doc.id});
         });
         setUsers(fetchedUsers);
-        dispatch(storeUsers(fetchedUsers,id));
+        dispatch(storeUsers(fetchedUsers, storedId));
         
       } catch (error) {
         console.error('Error fetching users: ', error);
@@ -43,9 +42,11 @@ import { storeUsers } from '../Redux/Actions'
     };
   
     return (
-      <View style={{ flex: 1, alignItems: 'center' }}> 
+      <View style={{ flex: 1, alignItems: 'center'}}> 
         <FlatList
           data={users}
+          showsVerticalScrollIndicator={false}
+          style={{marginBottom:responsiveHeight(.5)}}
           renderItem={({ item }) => {
             return (
               <TouchableOpacity

@@ -4,7 +4,7 @@ import { responsiveHeight, responsiveScreenWidth, responsiveWidth } from 'react-
 import { Rectangle, Setting } from '../assets/pictures/Svgs'
 import { useNavigation } from '@react-navigation/native'
 import Users from '../components/Users'
-import Settings from '../components/Settings'
+import Settings from '../components/SettingChlids'
 
 
 const Home = () => {

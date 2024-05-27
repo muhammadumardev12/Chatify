@@ -117,7 +117,9 @@ const DashBoard = () => {
             <TouchableOpacity style={{
              marginLeft:responsiveWidth(3),
             //  marginVertical:responsiveHeight(1),
-            }}>
+            }} 
+            onPress={()=>navigation.navigate('Settings')}
+            >
                 <Text
                 style={{fontSize:responsiveFontSize(2.5),color:'black',fontWeight:'bold'}}
                 >Settings</Text>

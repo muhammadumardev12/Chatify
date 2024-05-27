@@ -9,11 +9,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import messaging from '@react-native-firebase/messaging';
 import SplashScreen from './scr/screens/SplashScreen'
 import Users from './scr/components/Users'
-import Settings from './scr/components/Settings'
+
 import Chat from './scr/screens/Chat'
 import { beginAsyncEvent } from 'react-native/Libraries/Performance/Systrace'
 import DashBoard from './scr/screens/DashBoard'
 import Search from './scr/components/Search'
+import Settings from './scr/screens/Settings'
 
 
 const App = () => {

@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Users from '../components/Users';
-import Settings from '../components/Settings';
+import Settings from './SettingChlids';
 import { NavigationContainer } from '@react-navigation/native';
 import Groups from './Groups';
 import Status from './Status';

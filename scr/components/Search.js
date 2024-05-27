@@ -9,12 +9,16 @@ import {
 import {BackIcon} from '../assets/pictures/Svgs';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeLoginUser } from '../Redux/Actions';
 
 const Search = () => {
+  const dispatch =useDispatch()
   const navigation = useNavigation();
   const [name, setName] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [searchQuery,setSearchQuery] =useState('')
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +27,7 @@ const Search = () => {
         const storedAvatar = await AsyncStorage.getItem('AVATAR');
         setName(storedName);
         setAvatar(storedAvatar);
+        // dispatch(storeLoginUser(storedName, storedAvatar));
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +38,12 @@ const Search = () => {
   const UsersData = useSelector(state => {
     return state?.users
   })
-  // console.log("🚀 ~ data ~ data:", UsersData.user[0].name)
+  const UsersId = useSelector(state => {
+    return state?.users.id
+  })
+  const handleSearch = (txt) =>{
+     setSearchQuery(txt)
+  }
 
    
   
@@ -108,16 +118,23 @@ const Search = () => {
           <TextInput
             placeholder="search"
             placeholderTextColor={'black'}
+            clearButtonMode='always'
+            autoCapitalize='none'
+            onChangeText = {(text)=>handleSearch(text)}
             style={{
+
               width: responsiveWidth(70),
               height: responsiveHeight(6.5),
             }}
           />
         </View>
       {/* //------------------Users------------------------// */}
+      {UsersData.user.filter(user => user.name.toLowerCase().includes(searchQuery.toLowerCase())).length > 0 ? (
       <FlatList
-          data={UsersData.user}
-        
+          data={UsersData.user.filter(user => user.name.toLowerCase().includes(searchQuery.toLowerCase()))}
+          showsVerticalScrollIndicator={false}
+          style={{marginBottom:responsiveHeight(.5)}}
+          
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
@@ -139,12 +156,8 @@ const Search = () => {
                   overflow: 'hidden', // Ensure shadow is not clipped,
                   flexDirection: 'row',
                 }}
-                onPress={() => { navigation.navigate('Chat', { data: item, id: item.id }) }}
+                onPress={() => { navigation.navigate('Chat', { data: item, id: UsersId }) }}
               >
-                  {
-                console.log("🚀 ~ Users ~ id:", item.id)
-                    
-                }
                 <Image
                   source={{
                     uri: item.avatar
@@ -157,6 +170,9 @@ const Search = () => {
             )
           }}
         />
+      ) : (
+      <Text style={{color:'black',marginTop:responsiveHeight(1)}}>Data is not found</Text>)
+        }
 
       </View>
      
